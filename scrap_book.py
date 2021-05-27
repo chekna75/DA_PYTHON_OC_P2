@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 def scrap_book(url):
     reponse = requests.get(url)
     if reponse.ok:
-        soup = BeautifulSoup(reponse.content, 'html')
+        soup = BeautifulSoup(reponse.content, 'html.parser')
         title = soup.select_one('h1').text #selectionner le titre
         upc = soup.select_one("table tr:nth-child(1) > td").text
         prixsansTaxe = soup.select_one("table tr:nth-child(3) > td").text
