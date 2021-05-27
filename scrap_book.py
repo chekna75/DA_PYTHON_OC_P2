@@ -24,6 +24,6 @@ def scrap_book(url):
             "product_description": product_description,
             "category": category,
             "image_url": image_url,
-        }  
+        }
 # if __name__ == '__main__' :
     # print(scrap_book('http://books.toscrape.com/catalogue/the-black-maria_991/index.html')) 

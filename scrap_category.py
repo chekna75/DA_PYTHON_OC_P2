@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 def scrap_category():
     for u in generate_category_url():  # Boucle qui recupère l'url et génère les url
         reponse = requests.get(u) 
-        print(u)
         if reponse.ok:
             soup = BeautifulSoup(reponse.content, "html.parser")
             for item in soup.select('section h3 a'):
