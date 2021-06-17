@@ -18,12 +18,13 @@ def scrap_book(url):
             "url": url,
             "titre": title,
             "upc": upc,
-            "prixSansTaxe": prixsansTaxe,
-            "prixTaxe": prixTaxe,
+            "pt_price": prixsansTaxe,
+            "it_price": prixTaxe,
             "number_available": number_available,
             "product_description": product_description,
             "category": category,
             "image_url": image_url,
         }
-# if __name__ == '__main__' :
-    # print(scrap_book('http://books.toscrape.com/catalogue/the-black-maria_991/index.html')) 
+# if __name__ == '__main__':
+    # print(scrap_book('http://books.toscrape.com/catalogue/the-black-maria_991/index.html'))
+   

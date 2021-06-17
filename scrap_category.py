@@ -13,8 +13,10 @@ def scrap_category():
         else:
             break
 def generate_category_url():
+    yield f'http://books.toscrape.com/catalogue/page-{1}.html'
     nb = 0
     while True:
         nb += 1
         yield f'http://books.toscrape.com/catalogue/page-{nb}.html'
+        break
 # print(scrap_category('http://books.toscrape.com/catalogue/category/books/historical-fiction_4/index.html'))

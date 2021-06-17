@@ -1,21 +1,31 @@
+import requests
 from scrap_book import scrap_book
 from scrap_category import scrap_category
 import csv
+import urllib.request
 
 scrapping = {} 
-
-
 for book_url in scrap_category():  # on cree la boucle pour pouvoir scrapper les livre, on va prendre un par un les url de scrap_categrory
-    books = scrap_book(book_url)  # book egale le scrap d'un book
-    if not books['category'] in scrapping:
-        scrapping[books['category']] = []  # scrapping prend les valeur de book category
-        scrapping[books['category']].append(books)  # alors on cree la categorie du livre dans scrapping
+    book = scrap_book(book_url)  # book egale le scrap d'un book
+    book["image_url"]
+    res = requests.get(book["image_url"])
+    with open(f"csv/img/{book['upc']}.jpg", "wb") as file:
+        file.write(res.content)
+    if not book['category'] in scrapping:
+        scrapping[book['category']] = []  # scrapping prend les valeur de book category
+    scrapping[book['category']].append(book)  # alors on cree la categorie du livre dans scrapping
         # print(scrapping)
-    
-    with open('some.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerows(books.items())
-    with open('scraping.csv', 'a', newline='') as csvfile:
-        ecrire = csv.writer(csvfile)
-        for key, value in books.items():
-            ecrire.writerow([str(key) + ' : ' + str(value)])
+for category, books in scrapping.items():
+    with open(f'csv/{category}.csv', 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=[ 
+            "url",
+            "titre",
+            "upc",
+            "pt_price",
+            "it_price",
+            "number_available",
+            "product_description",
+            "category",
+            "image_url"])
+        writer.writeheader()
+        writer.writerows(books)
