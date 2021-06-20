@@ -26,6 +26,7 @@ for category, books in scrapping.items():
             "number_available",
             "product_description",
             "category",
-            "image_url"])
+            "image_url",
+            "chemin_url"])
         writer.writeheader()
         writer.writerows(books)

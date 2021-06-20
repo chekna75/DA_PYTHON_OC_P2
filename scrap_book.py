@@ -14,6 +14,7 @@ def scrap_book(url):
         product_description = soup.select_one("article > p").text
         category = soup.select_one("#default > div > div > ul > li:nth-child(3) > a").text
         image_url = soup.select_one("#product_gallery > div > div > div > img").get('src').replace('../..', 'http://books.toscrape.com')
+        chemin_url = ("csv/img/"+upc)
         return {  # Dictionnaire ou les valeur ci dessus seront ajoute 
             "url": url,
             "titre": title,
@@ -24,6 +25,7 @@ def scrap_book(url):
             "product_description": product_description,
             "category": category,
             "image_url": image_url,
+            "chemin_url": chemin_url,
         }
 # if __name__ == '__main__':
     # print(scrap_book('http://books.toscrape.com/catalogue/the-black-maria_991/index.html'))
