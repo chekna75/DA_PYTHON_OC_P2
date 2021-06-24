@@ -2,7 +2,7 @@ import requests
 from scrap_book import scrap_book
 from scrap_category import scrap_category
 import csv
-import urllib.request
+
 
 scrapping = {} 
 for book_url in scrap_category():  # on cree la boucle pour pouvoir scrapper les livre, on va prendre un par un les url de scrap_categrory
